@@ -95,6 +95,9 @@ import java.util.*;
 
     public static void bfs(int s, ArrayList<LinkedList<Integer>> G)
     {
+        LinkedList<Integer> queue = new LinkedList<Integer>();
+        queue.add(s);
+
         boolean[] discovered = new boolean[vertices];
         for(int i = 0; i < vertices; i++)
         {
@@ -102,10 +105,60 @@ import java.util.*;
         }
         discovered[s] = true;
 
-        for(int i = 0; i < vertices; i++)
+        while(queue.size() != 0)
         {
-            System.out.println(discovered[i]);
+            int node = queue.get(0);
+            if (discovered[node] == false)
+            {
+                discovered[node] = true;
+            }
+
+
         }
+        
+        
+
+
+        ArrayList<LinkedList<Integer>> L = new ArrayList<LinkedList<Integer>>();
+        L.add(new LinkedList<Integer>());
+        G.get(0).add(s);
+
+        // layer counter
+        int i = 0;
+
+        while(L.size() != 0)
+        {
+            G.get(0).add(s);
+
+
+        }
+
+
+
+
+
+
+
+
+
+        while(L.size() != 0)
+        {
+            L.add(new LinkedList<Integer>());
+            for(int n = 0; n < L.get(i).size(); n++)
+            {
+                int u = G.get().get(n);
+                if(discovered[u] == true)
+                {
+                    for(int count = 0; count < G.get(0);  )
+
+                }
+            }
+
+
+            
+        }
+
+
 
     }
 
