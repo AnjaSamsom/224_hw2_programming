@@ -125,15 +125,40 @@ public class main
 
         }
 
-
-        for(int i = 0; i < queue.size(); i++)
-        {
-            System.out.println(queue.get(i));
-        }
     }
 
     public static void dfs(int s, ArrayList<LinkedList<Integer>> G)
     {
-        System.out.println("we are in the dfs method!");
+        LinkedList<Integer> queue = new LinkedList<Integer>();
+        queue.add(s);
+
+
+        boolean[] discovered = new boolean[vertices+1];
+        for(int i = 0; i <= vertices; i++)
+        {
+            discovered[i] = false;
+        }
+        while(queue.size() != 0)
+        {
+            int u = queue.removeLast();
+            
+            
+
+            if (discovered[u] == false)
+            {
+                discovered[u] = true;
+                System.out.println(u);
+                for(int m = 0; m < G.get(u).size(); m++)
+                {
+                    if(discovered[G.get(u).get(m)] == false)
+                    {
+                        //System.out.println(G.get(u).get(m));
+                        queue.add(G.get(u).get(m));
+                    }
+                }
+            }
+
+
+        }
     }
  }
