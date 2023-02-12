@@ -49,41 +49,41 @@ public class main
     public static ArrayList<LinkedList<Integer>> make_tree()
     {
 
-        for(int i = 0; i<vertices; i++)
+        for(int i = 0; i<=vertices; i++)
         {
             G.add(new LinkedList<Integer>());
 
         }
         
-        G.get(0).add(2);
-        G.get(0).add(3);
-
-        G.get(1).add(1);
+        G.get(1).add(2);
         G.get(1).add(3);
-        G.get(1).add(4);
-        G.get(1).add(5);
 
         G.get(2).add(1);
-        G.get(2).add(2);
+        G.get(2).add(3);
+        G.get(2).add(4);
         G.get(2).add(5);
-        G.get(2).add(7);
-        G.get(2).add(8);
 
+        G.get(3).add(1);
         G.get(3).add(2);
         G.get(3).add(5);
+        G.get(3).add(7);
+        G.get(3).add(8);
 
         G.get(4).add(2);
-        G.get(4).add(3);
-        G.get(4).add(4);
-        G.get(4).add(6);
+        G.get(4).add(5);
 
-        G.get(5).add(5);
+        G.get(5).add(2);
+        G.get(5).add(3);
+        G.get(5).add(4);
+        G.get(5).add(6);
 
-        G.get(6).add(3);
-        G.get(6).add(8);
+        G.get(6).add(5);
 
         G.get(7).add(3);
-        G.get(7).add(7);
+        G.get(7).add(8);
+
+        G.get(8).add(3);
+        G.get(8).add(7);
 
 
         return G;
@@ -95,29 +95,29 @@ public class main
     {
         LinkedList<Integer> queue = new LinkedList<Integer>();
         queue.add(s);
-        System.out.println(s + " ");
 
-        boolean[] discovered = new boolean[vertices];
-        for(int i = 0; i < vertices; i++)
+
+        boolean[] discovered = new boolean[vertices+1];
+        for(int i = 0; i <= vertices; i++)
         {
             discovered[i] = false;
         }
-        //discovered[s] = true;
-
         while(queue.size() != 0)
         {
-            int node = queue.removeFirst();
+            int u = queue.removeFirst();
+            
+            
 
-            if (discovered[node-1] == false)
+            if (discovered[u] == false)
             {
-                discovered[node-1] = true;
-                for(int m = 0; m < G.get(node-1).size(); m++)
+                discovered[u] = true;
+                System.out.println(u);
+                for(int m = 0; m < G.get(u).size(); m++)
                 {
-                    
-                    if(discovered[m] == false)
+                    if(discovered[G.get(u).get(m)] == false)
                     {
-                        System.out.println(G.get(node-1).get(0) + " ");
-                        queue.add(G.get(node-1).get(m));
+                        //System.out.println(G.get(u).get(m));
+                        queue.add(G.get(u).get(m));
                     }
                 }
             }
