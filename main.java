@@ -22,14 +22,20 @@ public class main
             String choice = input.nextLine().toUpperCase();
             if(choice.equals("BFS"))
             {
-                bfs(1, G);
+                System.out.print("Start node: ");
+                int start_node = input.nextInt();
+
+                bfs(start_node, G);
                 enter = false;
                 input.close();
             }
 
             else if (choice.equals("DFS"))
             {
-                dfs(1, G);
+                System.out.print("Start node: ");
+                int start_node = input.nextInt();
+
+                dfs(start_node, G);
                 enter = false;
                 input.close();
 
