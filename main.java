@@ -1,9 +1,9 @@
 import java.util.*;
 
-
- public class main
+public class main
  {
     private static int vertices = 8;
+    private static ArrayList<LinkedList<Integer>> G = new ArrayList<LinkedList<Integer>>();
     public static void main(String[]args)
     {
         Scanner input = new Scanner(System.in);
@@ -19,14 +19,14 @@ import java.util.*;
             String choice = input.nextLine().toUpperCase();
             if(choice.equals("BFS"))
             {
-                bfs(0, G);
+                bfs(1, G);
                 enter = false;
                 input.close();
             }
 
             else if (choice.equals("DFS"))
             {
-                dfs(0, G);
+                dfs(1, G);
                 enter = false;
                 input.close();
 
@@ -49,14 +49,12 @@ import java.util.*;
     public static ArrayList<LinkedList<Integer>> make_tree()
     {
 
-        ArrayList<LinkedList<Integer>> G = new ArrayList<LinkedList<Integer>>();
-        for( int i = 0; i<8; i++)
+        for(int i = 0; i<vertices; i++)
         {
             G.add(new LinkedList<Integer>());
+
         }
-
-
-
+        
         G.get(0).add(2);
         G.get(0).add(3);
 
@@ -97,69 +95,41 @@ import java.util.*;
     {
         LinkedList<Integer> queue = new LinkedList<Integer>();
         queue.add(s);
+        System.out.println(s + " ");
 
         boolean[] discovered = new boolean[vertices];
         for(int i = 0; i < vertices; i++)
         {
             discovered[i] = false;
         }
-        discovered[s] = true;
+        //discovered[s] = true;
 
         while(queue.size() != 0)
         {
-            int node = queue.get(0);
-            if (discovered[node] == false)
+            int node = queue.removeFirst();
+
+            if (discovered[node-1] == false)
             {
-                discovered[node] = true;
-            }
-
-
-        }
-        
-        
-
-
-        ArrayList<LinkedList<Integer>> L = new ArrayList<LinkedList<Integer>>();
-        L.add(new LinkedList<Integer>());
-        G.get(0).add(s);
-
-        // layer counter
-        int i = 0;
-
-        while(L.size() != 0)
-        {
-            G.get(0).add(s);
-
-
-        }
-
-
-
-
-
-
-
-
-
-        while(L.size() != 0)
-        {
-            L.add(new LinkedList<Integer>());
-            for(int n = 0; n < L.get(i).size(); n++)
-            {
-                int u = G.get().get(n);
-                if(discovered[u] == true)
+                discovered[node-1] = true;
+                for(int m = 0; m < G.get(node-1).size(); m++)
                 {
-                    for(int count = 0; count < G.get(0);  )
-
+                    
+                    if(discovered[m] == false)
+                    {
+                        System.out.println(G.get(node-1).get(0) + " ");
+                        queue.add(G.get(node-1).get(m));
+                    }
                 }
             }
 
 
-            
         }
 
 
-
+        for(int i = 0; i < queue.size(); i++)
+        {
+            System.out.println(queue.get(i));
+        }
     }
 
     public static void dfs(int s, ArrayList<LinkedList<Integer>> G)
