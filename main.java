@@ -3,6 +3,9 @@ import java.util.*;
 public class main
  {
     private static int vertices = 8;
+
+    // got information about making an adjacency list with an arraylist and a linkedlist from
+    // https://stackoverflow.com/questions/14783831/java-implementation-of-adjacency-list
     private static ArrayList<LinkedList<Integer>> G = new ArrayList<LinkedList<Integer>>();
     public static void main(String[]args)
     {
