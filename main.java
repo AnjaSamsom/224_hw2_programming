@@ -1,8 +1,12 @@
 import java.util.*;
 
+/**
+ * Anja Samsom HW 2 Programming
+ * CS 224
+ */
 public class main
  {
-    private static int vertices = 8;
+    private static int node_num = 8;
 
     // got information about making an adjacency list with an arraylist and a linkedlist from
     // https://stackoverflow.com/questions/14783831/java-implementation-of-adjacency-list
@@ -43,11 +47,14 @@ public class main
             else
             {
                 choice = get_input();
-
             }
         }
     }
 
+    /**
+     * 
+     * this method gets user input and returns it
+     */
     public static String get_input()
     {
         Scanner input = new Scanner(System.in);
@@ -55,15 +62,21 @@ public class main
         return input.nextLine().toUpperCase();
     }
 
+    /**
+     * 
+     * makes the tree, does not take input, returns the tree 
+     */
     public static ArrayList<LinkedList<Integer>> make_tree()
     {
 
-        for(int i = 0; i<=vertices; i++)
+        for(int i = 0; i<=node_num; i++)
         {
             G.add(new LinkedList<Integer>());
 
         }
-        
+
+
+        // I decided to just start my list at 1 and leave index 0 empty
         G.get(1).add(2);
         G.get(1).add(3);
 
@@ -100,19 +113,29 @@ public class main
 
     }
 
+
+    /**
+     * 
+     * runs bfs from start node
+     * takes in the graph G
+     * prints out nodes in bfs order
+     */
     public static void bfs(int s, ArrayList<LinkedList<Integer>> G)
     {
+        // queue to hold nodes
         LinkedList<Integer> queue = new LinkedList<Integer>();
         queue.add(s);
 
 
-        boolean[] discovered = new boolean[vertices+1];
-        for(int i = 0; i <= vertices; i++)
+        // this boolean array holds whether or not the node has been discovered
+        boolean[] discovered = new boolean[node_num+1];
+        for(int i = 0; i <= node_num; i++)
         {
             discovered[i] = false;
         }
         while(queue.size() != 0)
         {
+            // FIFO
             int u = queue.removeFirst();
             
             
@@ -125,7 +148,7 @@ public class main
                 {
                     if(discovered[G.get(u).get(m)] == false)
                     {
-                        //System.out.println(G.get(u).get(m));
+                        // adding node to the queue
                         queue.add(G.get(u).get(m));
                     }
                 }
@@ -136,21 +159,28 @@ public class main
 
     }
 
+    /**
+     * 
+     * runs dfs from start node
+     * takes in the graph G
+     * prints out nodes in bfs order
+     */
     public static void dfs(int s, ArrayList<LinkedList<Integer>> G)
     {
+        // queue to hold nodes
         LinkedList<Integer> queue = new LinkedList<Integer>();
         queue.add(s);
 
-
-        boolean[] discovered = new boolean[vertices+1];
-        for(int i = 0; i <= vertices; i++)
+        // this boolean array holds whether or not the node has been discovered
+        boolean[] discovered = new boolean[node_num+1];
+        for(int i = 0; i <= node_num; i++)
         {
             discovered[i] = false;
         }
         while(queue.size() != 0)
         {
+            // LIFO
             int u = queue.removeLast();
-            
             
 
             if (discovered[u] == false)
@@ -161,7 +191,7 @@ public class main
                 {
                     if(discovered[G.get(u).get(m)] == false)
                     {
-                        //System.out.println(G.get(u).get(m));
+                        // adding node to the queue
                         queue.add(G.get(u).get(m));
                     }
                 }
