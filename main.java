@@ -109,10 +109,7 @@ public class main
 
 
         return G;
-
-
     }
-
 
     /**
      * 
@@ -196,7 +193,6 @@ public class main
                     }
                 }
             }
-
 
         }
     }
