@@ -4,7 +4,7 @@ import java.util.*;
  * Anja Samsom HW 2 Programming
  * CS 224
  */
-public class main
+public class search
  {
     private static int node_num = 8;
 
@@ -48,6 +48,9 @@ public class main
                 choice = get_input();
             }
         }
+
+        input.close();
+
     }
 
     /**
